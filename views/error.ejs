@@ -1,0 +1,23 @@
+<%layout('layouts/boilerplate')%>
+
+<div class="d-flex flex-column vh-100">   
+    <div class="container my-auto">
+        <div class="row">
+            <div class="col text-center">
+                <h1 class="display-4">Oops!</h1>
+                <p class="lead">Something went wrong on our end. Please try again later.</p>
+                <hr class="my-4">
+                <div class="alert alert-danger text-left">
+                    <h5>Error Details:</h5>
+                    <p><strong>Message:</strong> <%= err.message %></p>
+                    <%if(process.env.NODE_ENV!=="production"){%>
+                        <pre><code><%= err.stack %></code></pre>
+                    <%}%>
+                </div>
+                <p>If the problem persists, feel free to contact our support team.</p>
+                <a class="btn btn-primary btn-lg" href="/" role="button">Go Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+

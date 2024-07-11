@@ -1,0 +1,71 @@
+<%layout('layouts/boilerplate')%>
+
+<h1>Products</h1>
+
+<div class="container">
+    <div class="d-flex flex-row flex-wrap">
+      <% for (let product of products) { %>
+        <div class="card">
+          <%if(product.images.length!=0){%>
+          <img src="<%=product.images[0].url%>" class="card-img-top" alt="...">
+          <%}else{%>
+            <img src="data:image/png;base64,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" class="d-block w-100 h-30" alt="No images available">
+          <%}%>
+          <div class="card-body">
+            <h5 class="card-title"><%= product.title %></h5>
+            <p class="card-text"><%= product.description %></p>
+          </div>
+          <div class="card-footer">
+            <a href="/Products/<%= product._id %>" class="btn btn-primary">View Product</a>
+            <span class="success"><%= product.price %>$</span>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  </div>
+
+  <style>
+    .card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 18rem;
+      height: 24rem; /* Ensure all cards are of equal height */
+      margin: 0.5rem;
+    }
+    .card-img-top {
+      width: 100%;
+      height: 150px;
+      object-fit: cover; /* Ensure the image fits within the specified height */
+    }
+    .card-body {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2; /* Show only 2 lines */
+      -webkit-box-orient: vertical;
+    }
+    .card-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* Show only 3 lines */
+      -webkit-box-orient: vertical;
+    }
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: green;
+    }
+  </style>
+
+
